@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { mainProjects, miniProjects, caseStudies } from '@/lib/content';
 
-const SITE = 'https://abhinav-pandey.dev';
+const SITE = 'https://abhinav3419.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
