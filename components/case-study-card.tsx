@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Zap } from 'lucide-react';
 import type { CaseStudy } from '@/lib/content';
 
 export function CaseStudyCard({ cs }: { cs: CaseStudy }) {
@@ -14,11 +14,7 @@ export function CaseStudyCard({ cs }: { cs: CaseStudy }) {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="group h-full"
     >
-      <Link
-        href={`/case-studies/${cs.slug}`}
-        className="card-gradient relative flex h-full flex-col justify-between p-7"
-      >
-        {/* Header row */}
+      <div className="card-gradient relative flex h-full flex-col justify-between p-7">
         <div>
           <div className="mb-5 flex items-start justify-between">
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-subtle">
@@ -27,15 +23,16 @@ export function CaseStudyCard({ cs }: { cs: CaseStudy }) {
             <span className="tag">{cs.company}</span>
           </div>
 
-          <h3 className="font-display text-[1.5rem] font-normal leading-[1.15] tracking-crisp text-ink transition-colors group-hover:text-accent">
-            {cs.title}
-          </h3>
-          <p className="mt-3 text-[14px] leading-relaxed text-muted line-clamp-3">
-            {cs.tagline}
-          </p>
+          <Link href={`/case-studies/${cs.slug}`} className="block">
+            <h3 className="font-display text-[1.5rem] font-normal leading-[1.15] tracking-crisp text-ink transition-colors group-hover:text-accent">
+              {cs.title}
+            </h3>
+            <p className="mt-3 text-[14px] leading-relaxed text-muted line-clamp-3">
+              {cs.tagline}
+            </p>
+          </Link>
         </div>
 
-        {/* Footer */}
         <div className="mt-8 flex items-end justify-between gap-3">
           <div className="flex flex-wrap gap-1.5">
             {cs.frameworks.slice(0, 2).map((f) => (
@@ -47,18 +44,31 @@ export function CaseStudyCard({ cs }: { cs: CaseStudy }) {
               </span>
             ))}
           </div>
-          <ArrowUpRight
-            size={18}
-            className="arrow-slide shrink-0 text-muted group-hover:text-accent"
-          />
+
+          <div className="flex items-center gap-3">
+            {cs.prototype && (
+              <Link
+                href={cs.prototype}
+                className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-accent transition-all hover:border-accent hover:bg-accent/20"
+              >
+                <Zap size={11} className="fill-accent" />
+                Prototype
+              </Link>
+            )}
+            <Link href={`/case-studies/${cs.slug}`} aria-label="Open case study">
+              <ArrowUpRight
+                size={18}
+                className="arrow-slide shrink-0 text-muted group-hover:text-accent"
+              />
+            </Link>
+          </div>
         </div>
 
-        {/* Hover accent line */}
         <div
           className="absolute inset-x-7 bottom-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-700 ease-out group-hover:scale-x-100"
           aria-hidden
         />
-      </Link>
+      </div>
     </motion.article>
   );
 }

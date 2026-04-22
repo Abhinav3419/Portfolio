@@ -42,6 +42,7 @@ export type CaseStudy = {
   frameworks: string[];
   repo?: string;
   demo?: string;
+  prototype?: string; // internal route to an interactive prototype page
 };
 
 /* =========================================================
@@ -246,6 +247,7 @@ export const caseStudies: CaseStudy[] = [
       'A/B test retention lift on a lapsed-reader cohort before rolling to core users.',
     ],
     frameworks: ['CIRCLES', 'RICE', 'Sensory Design'],
+    prototype: '/case-studies/kindle-physical-book/prototype',
   },
   {
     slug: 'project-sunroof',
@@ -276,6 +278,7 @@ export const caseStudies: CaseStudy[] = [
       'File a defensive publication or patent on the Pb × Mc decomposition.',
     ],
     frameworks: ['Physics-First Strategy', 'Exponential Decay Modeling'],
+    prototype: '/case-studies/project-sunroof/prototype',
   },
   {
     slug: 'netflix-sensory',

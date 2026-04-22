@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, Github, Zap } from 'lucide-react';
 import type { CaseStudy } from '@/lib/content';
 import { BackLink } from './back-link';
 import { Reveal, Stagger, staggerItem } from './reveal';
@@ -44,19 +44,31 @@ export function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
             </p>
           </Reveal>
 
-          {cs.repo && (
+          {(cs.repo || cs.prototype) && (
             <Reveal delay={0.34}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
-                <a
-                  href={cs.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary group"
-                >
-                  <Github size={15} />
-                  View source
-                  <ArrowUpRight size={15} className="arrow-slide" />
-                </a>
+                {cs.prototype && (
+                  <Link
+                    href={cs.prototype}
+                    className="btn-primary group"
+                  >
+                    <Zap size={14} className="fill-paper" />
+                    Launch Prototype
+                    <ArrowUpRight size={15} className="arrow-slide" />
+                  </Link>
+                )}
+                {cs.repo && (
+                  <a
+                    href={cs.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost group"
+                  >
+                    <Github size={15} />
+                    View source
+                    <ArrowUpRight size={15} className="arrow-slide" />
+                  </a>
+                )}
               </div>
             </Reveal>
           )}

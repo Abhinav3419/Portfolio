@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { mainProjects, miniProjects, caseStudies } from '@/lib/content';
 
-const SITE = 'https://abhinav3419.vercel.app';
+const SITE = 'https://abhinav-pandey.dev';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -31,5 +31,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...miniRoutes, ...caseRoutes];
+  const prototypeRoutes: MetadataRoute.Sitemap = caseStudies
+    .filter((c) => c.prototype)
+    .map((c) => ({
+      url: `${SITE}${c.prototype}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    }));
+
+  return [...staticRoutes, ...projectRoutes, ...miniRoutes, ...caseRoutes, ...prototypeRoutes];
 }
