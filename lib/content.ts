@@ -209,6 +209,50 @@ export const miniProjects: Project[] = [
       'Key lesson documented in the README: data and feature engineering moved MAE more than any architecture change.',
     ],
   },
+  {
+    slug: 'crisislens-ai',
+    kind: 'mini',
+    title: 'CrisisLens AI — Urban Decision Intelligence',
+    tagline:
+      'A 7-module crisis intelligence platform for New Delhi — live weather, physics-based flood prediction, hospital routing, RAG advisory, and dispatch optimization in a single command center.',
+    summary:
+      "An Urban Decision Intelligence Platform combining live weather ingestion, Manning's equation flood prediction across 5 Yamuna stations, hospital capacity tracking (20 facilities), geotagged incident command, telecom anomaly detection (500 towers via Z-score), RAG-powered crisis advisory (15 NDMA/DDMA protocols via ChromaDB), and fastest-route dispatch optimization. In a Mayur Vihar flood scenario, dispatching by fastest road route saved 8.4 minutes over nearest-by-distance — in emergency response, that gap separates survival from loss.",
+    year: '2026',
+    role: 'Solo build · End-to-end · System design',
+    status: 'Shipped',
+    repo: 'https://github.com/Abhinav3419/Mini-Projects/tree/main/02-CrisisLens-AI',
+    metrics: [
+      { label: 'Dispatch time saved', value: '8+ min', note: 'fastest-route vs nearest' },
+      { label: 'Flood prediction model', value: "Manning's eq", note: 'Q = (1/n)AR^⅔S^½' },
+      { label: 'RAG protocols indexed', value: '15', note: 'NDMA + DDMA via ChromaDB' },
+      { label: 'Telecom towers monitored', value: '500', note: 'Z-score anomaly, zero false positives' },
+    ],
+    problem:
+      'Urban crisis response in Indian megacities operates on fragmented data — weather feeds, hospital rosters, incident logs, and dispatch tables live in separate systems with no shared situational awareness. When a flood hits, the nearest ambulance by straight-line distance is not the fastest by road. The cheapest mistake in crisis management is sending help to the wrong place; the most expensive is sending it to the right place, slowly.',
+    approach: [
+      'Designed a 7-module architecture with a unified data layer (data_ingestion.py) that federates live APIs (Open-Meteo weather, GDELT news events, OpenRouteService routing) with simulated real-time feeds for hospitals and telecom towers.',
+      "Built a physics-informed flood model using Manning's open-channel flow equation (Q = (1/n)AR^⅔S^½) with kinematic wave propagation across 5 Yamuna monitoring stations, producing zone-level flood arrival time estimates.",
+      'Implemented an 8-zone flood risk heatmap via Folium, overlaying live precipitation data with channel geometry and land-use roughness coefficients calibrated to New Delhi terrain.',
+      'Constructed a hospital capacity panel tracking 20 New Delhi hospitals with real-time bed/ICU/ventilator availability and nearest-routing via OpenRouteService — not Euclidean distance.',
+      'Built a telecom anomaly detection module monitoring 500 cell towers using diurnal Z-score baselines — anomalous signal dropout patterns indicate infrastructure damage before official reports arrive. Achieved zero false positives on synthetic crisis scenarios.',
+      'Deployed a RAG crisis advisory module (ChromaDB vector store, 15 NDMA/DDMA disaster protocols) that retrieves context-specific response procedures given incident type and severity.',
+      'Engineered a dispatch optimizer that routes emergency vehicles by fastest road path (OpenRouteService) rather than nearest-by-distance, demonstrating an 8.4-minute improvement in the Mayur Vihar flood test scenario.',
+    ],
+    stack: [
+      { label: 'Core', items: ['Python 3.10', 'Streamlit (premium UI)', 'Folium (geospatial)'] },
+      { label: 'ML / RAG', items: ['ChromaDB', 'Z-score anomaly detection', "Manning's equation"] },
+      { label: 'APIs', items: ['Open-Meteo (weather)', 'GDELT (incidents)', 'OpenRouteService (routing)'] },
+      { label: 'Tooling', items: ['pandas', 'NumPy', 'requests', 'modular architecture'] },
+    ],
+    outcomes: [
+      '8.4-minute dispatch improvement over nearest-by-distance in the Mayur Vihar flood scenario — validated via OpenRouteService road network routing.',
+      'Zero false positives on telecom anomaly detection across 500 simulated tower feeds using diurnal Z-score thresholding.',
+      '15 NDMA/DDMA disaster response protocols indexed and retrievable via RAG — context-aware advisory for flood, earthquake, chemical spill, and mass casualty events.',
+      "Physics-informed flood arrival estimates at 5 Yamuna stations using Manning's equation with station-specific channel geometry and roughness coefficients.",
+      '7-module Streamlit command center with interactive tabs, gradient accents, and a unified data layer that degrades gracefully when APIs are unavailable.',
+      'Demonstrates full-stack crisis intelligence: geospatial analytics, physics-informed ML, RAG, anomaly detection, and route optimization in a single deployable application.',
+    ],
+  },
 ];
 
 /* =========================================================
@@ -451,12 +495,6 @@ export const timeline = [
     heading: 'ML engineering, applied research, portfolio build-out.',
     detail:
       'Active work on ENSO Free Energy (manuscript in prep), Wedding Demand Forecast (published), and a PM-flavoured case-study portfolio spanning six companies.',
-  },
-  {
-    period: '2024 — 2025',
-    heading: 'Bridging teaching and machine learning.',
-    detail:
-      'Teaching Physics, Mathematics, and Quantitative Aptitude for NEET/JEE/CUET prep while building a production-grade ML portfolio on the side. Domain switches are a marathon; the technical foundation from Applied Mechanics accelerates the pace.',
   },
   {
     period: 'M.Tech',
