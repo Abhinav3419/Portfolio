@@ -109,7 +109,7 @@ export default function HomePage() {
           <div className="lg:col-span-5">
             <SectionHeader
               eyebrow="About · /01"
-              title="An engineer first. An educator by trade. An ML practitioner by design."
+              title="An engineer first. An ML practitioner by design."
             />
           </div>
 
@@ -129,9 +129,7 @@ export default function HomePage() {
 
             <Reveal delay={0.12}>
               <p className="mt-6 text-[17px] leading-[1.75] text-muted">
-                Alongside this, years of teaching physics, mathematics, and quantitative
-                aptitude for NEET, JEE, and CUET students has sharpened one non-obvious
-                skill: reducing a tangled problem to its smallest honest explanation.
+                Alongside this, years of solving physics and engineering problems — from continuum mechanics to signal processing — has 		sharpened one non-obvious skill: reducing a tangled problem to its smallest honest explanation.
                 That discipline shows up in every repo — in commit hygiene, README
                 structure, and the separation between what a model claims and what the
                 data actually supports.
